@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MPu-h4-IWa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Image Classification View Controller-->
+        <scene sceneID="9Lq-ti-DJX">
+            <objects>
+                <viewController id="MPu-h4-IWa" customClass="ImageClassificationViewController" customModule="Core_ML_Vision_Custom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oBa-W5-Ood">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pUB-PT-eoR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAg-J4-Lwe">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="DIl-Jp-qo4">
+                                        <connections>
+                                            <action selector="takePicture" destination="MPu-h4-IWa" id="7Ih-PP-S2K"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OpV-bK-Olg"/>
+                                    <barButtonItem systemItem="refresh" id="uCt-W1-sDm">
+                                        <connections>
+                                            <action selector="updateModel:" destination="MPu-h4-IWa" id="xOq-St-NK4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YX-t4-YGx">
+                                <rect key="frame" x="0.0" y="578.5" width="375" height="44.5"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3e2-oF-SfQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Add a photo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEb-NC-NRJ">
+                                            <rect key="frame" x="25" y="10" width="325" height="24.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="pEb-NC-NRJ" secondAttribute="trailing" constant="25" id="5CC-Cv-t7u"/>
+                                        <constraint firstAttribute="bottom" secondItem="pEb-NC-NRJ" secondAttribute="bottom" constant="10" id="HWh-kn-XcG"/>
+                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="top" secondItem="3e2-oF-SfQ" secondAttribute="top" constant="10" id="eI5-60-wof"/>
+                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="leading" secondItem="3e2-oF-SfQ" secondAttribute="leading" constant="25" id="xAg-Wv-S29"/>
+                                    </constraints>
+                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Model: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2I-nz-Bpy" userLabel="Current Model:">
+                                <rect key="frame" x="137.5" y="640" width="100.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="bottom" secondItem="b2I-nz-Bpy" secondAttribute="bottom" constant="10" id="IaM-ni-zxv"/>
+                            <constraint firstItem="b2I-nz-Bpy" firstAttribute="centerX" secondItem="oBa-W5-Ood" secondAttribute="centerX" id="S0r-AT-4iJ"/>
+                            <constraint firstItem="pUB-PT-eoR" firstAttribute="leading" secondItem="oBa-W5-Ood" secondAttribute="leading" id="X6A-uN-JTq"/>
+                            <constraint firstItem="pUB-PT-eoR" firstAttribute="trailing" secondItem="dAg-J4-Lwe" secondAttribute="trailing" id="ZQM-VP-HaA"/>
+                            <constraint firstItem="pUB-PT-eoR" firstAttribute="bottom" secondItem="dAg-J4-Lwe" secondAttribute="bottom" id="bXh-dw-Iqp"/>
+                            <constraint firstItem="1YX-t4-YGx" firstAttribute="leading" secondItem="QGZ-b4-zCe" secondAttribute="leading" id="dFr-b7-vgV"/>
+                            <constraint firstItem="b2I-nz-Bpy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QGZ-b4-zCe" secondAttribute="leading" constant="60" id="h4C-dj-fNl"/>
+                            <constraint firstItem="pUB-PT-eoR" firstAttribute="centerY" secondItem="oBa-W5-Ood" secondAttribute="centerY" id="pxE-cT-OTc"/>
+                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="trailing" secondItem="1YX-t4-YGx" secondAttribute="trailing" id="ruV-85-t0Y"/>
+                            <constraint firstAttribute="trailing" secondItem="pUB-PT-eoR" secondAttribute="trailing" id="tlg-dE-bfb"/>
+                            <constraint firstItem="pUB-PT-eoR" firstAttribute="top" secondItem="oBa-W5-Ood" secondAttribute="top" id="uvo-Pf-Wrd"/>
+                            <constraint firstItem="pUB-PT-eoR" firstAttribute="leading" secondItem="dAg-J4-Lwe" secondAttribute="leading" id="yD6-rE-wFN"/>
+                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="b2I-nz-Bpy" secondAttribute="trailing" constant="60" id="yuj-Mc-FpR"/>
+                            <constraint firstItem="dAg-J4-Lwe" firstAttribute="top" secondItem="1YX-t4-YGx" secondAttribute="bottom" id="zTR-HR-NEH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QGZ-b4-zCe"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="DIl-Jp-qo4" id="Uda-Bb-pvW"/>
+                        <outlet property="classificationLabel" destination="pEb-NC-NRJ" id="fdK-Gq-GJU"/>
+                        <outlet property="currentModelLabel" destination="b2I-nz-Bpy" id="cYQ-WA-RnQ"/>
+                        <outlet property="imageView" destination="pUB-PT-eoR" id="o73-CL-qHW"/>
+                        <outlet property="updateModelButton" destination="uCt-W1-sDm" id="VRE-M6-kkf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igj-I4-czO" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="138.0809595202399"/>
+        </scene>
+    </scenes>
+</document>
